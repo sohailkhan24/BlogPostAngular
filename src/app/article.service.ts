@@ -15,4 +15,10 @@ getArticles(): Observable<Article[]> {
  return of(articles);
 }
 
+
+// tslint:disable-next-line: ban-types
+getArticle(key: String): Observable<Article> {
+  const article: Article[] = ARTICLES.filter(a => a.key === key);
+  return of(article[0]);
+ }
 }

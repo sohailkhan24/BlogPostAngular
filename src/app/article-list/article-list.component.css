@@ -1,39 +1,23 @@
-.card{
+.card {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 4px;
     margin-top: 15px;
-
-
 }
-.card:hover{
-    text-shadow: darkslategray;
-    color: rgb(133, 125, 125);
-}
-.card-body{
+
+.card-body {
     display: flex;
     padding: 15px;
-
 }
 
-h3{
+h3 {
     font-size: 32px;
 }
-h3:hover{
-    color: rgba(62, 78, 23, 0.589);
-}
 
-img{
-
-    margin-right: 0.7rem;
+img {
     max-height: 200px;
-}
-.meta-info{
-    color:grey;
-    margin-top: -28px;
-    font-size: 14px;
 }
 
 .continue-reading {
-    font-style:italic;
-    color: grey;
+    font-style: italic;
+    color: gray;
 }
