@@ -9,9 +9,10 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { AboutComponent } from './about/about.component';
 import { ArticleComponent } from './article/article.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     NavBarComponent,
     FooterComponent,
@@ -21,8 +22,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
       NotFoundComponent
    ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

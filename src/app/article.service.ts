@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Article } from './article';
@@ -8,17 +9,15 @@ import { ARTICLES } from './mock-articles';
 })
 export class ArticleService {
 
-constructor() { }
+constructor(private http: HttpClient) { }
 
 getArticles(): Observable<Article[]> {
- const articles: Article[] = ARTICLES;
- return of(articles);
+  return this.http.get<Article[]>('http://localhost:8000');
 }
 
 
 // tslint:disable-next-line: ban-types
 getArticle(key: String): Observable<Article> {
-  const article: Article[] = ARTICLES.filter(a => a.key === key);
-  return of(article[0]);
+  return this.http.get<Article>('http://localhost:8000'+key);
  }
 }
