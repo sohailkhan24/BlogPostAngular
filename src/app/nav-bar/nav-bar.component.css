@@ -1,0 +1,40 @@
+.title{
+    font-size: 2em;
+    text-align: center;
+    border-bottom: 1px solid burlywood;
+    padding: 0.7rem;
+}
+
+.title a {
+    text-decoration: none !important;
+    color: cyan  !important;
+}
+.title:hover{
+    
+    text-shadow:1px 1px rgb(116, 92, 61);
+}
+
+.navbar{
+    font-size: 1.2rem;
+    text-align: center;
+    color: cyan;
+    border-bottom: 1px solid cyan;
+    padding: 0.5rem;
+}
+
+.nav-item {
+    padding: 0.2rem;
+    text-decoration: none;
+    color: darkcyan;
+}
+
+.nav-item:visited, .nav-item:active, .nav-item:focus{
+    text-decoration: none;
+    color: darkred;
+}
+
+.nav-item:hover{
+    text-decoration:solid;
+    text-shadow:1px 1px black;
+    color: darkred;
+}
