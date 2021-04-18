@@ -8,7 +8,18 @@ export const ARTICLES: Article[] = [
         description: 'This is my first article',
         key: 'my-first-article',
         date: new Date(),
-        imageUrl: 'http:angular.io/assets/image/logos/angular/angular.png'
+        imageUrl: 'https://getwallpapers.com/wallpaper/full/e/b/8/1526301.jpg'
+
+    },
+
+    {
+        id: 2,
+        title: 'My second Article',
+        content: '',
+        description: 'This is my second article read it man',
+        key: 'my-first-article',
+        date: new Date(),
+        imageUrl: 'https://getwallpapers.com/wallpaper/full/e/b/8/1526301.jpg'
 
     },
 ];
