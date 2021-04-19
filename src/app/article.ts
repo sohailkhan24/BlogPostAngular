@@ -6,6 +6,8 @@ export class Article{
     content = '';
     description = '';
     imageUrl = '';
+    viewCount: number;
+    published: boolean;
 
 
 }

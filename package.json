@@ -26,6 +26,7 @@
     "@angular/router": "~11.2.9",
     "@nguniversal/express-engine": "^11.2.1",
     "express": "^4.15.2",
+    "mongoose": "^5.12.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
