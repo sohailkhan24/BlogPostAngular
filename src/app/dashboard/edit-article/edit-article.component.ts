@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Article } from "src/app/article";
-import { DashboardService } from "../dashboard.service";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/app/article';
+import { DashboardService } from '../dashboard.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-edit-article",
-  templateUrl: "./edit-article.component.html",
-  styleUrls: ["./edit-article.component.css"]
+  selector: 'app-edit-article',
+  templateUrl: './edit-article.component.html',
+  styleUrls: ['./edit-article.component.css']
 })
 export class EditArticleComponent implements OnInit {
   article: Article = null;
@@ -19,11 +19,12 @@ export class EditArticleComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.route.params.subscribe(params => {
       const key: string = params.key;
 
-      if (key !== "new") {
+      if (key !== 'new') {
         this.getArticle(key);
       } else {
         this.article = new Article();
@@ -36,7 +37,7 @@ export class EditArticleComponent implements OnInit {
   getArticle(key: string): void {
     this.dashboardService.getArticle(key).subscribe((article: Article) => {
       if (article === null) {
-        this.router.navigateByUrl("404");
+        this.router.navigateByUrl('404');
         return;
       }
       this.article = article;
@@ -52,7 +53,7 @@ export class EditArticleComponent implements OnInit {
   }
 
   viewPreview(): void {
-    this.router.navigateByUrl("/dashboard/preview/" + this.article.key);
+    this.router.navigateByUrl('/dashboard/preview/' + this.article.key);
   }
 
   deleteArticle(): void {
@@ -64,7 +65,7 @@ export class EditArticleComponent implements OnInit {
     if (deletionConfirmed) {
       this.dashboardService.deleteArticle(this.article.id).subscribe(
         () => {
-          this.router.navigateByUrl("dashboard");
+          this.router.navigateByUrl('dashboard');
         },
         error => alert(error.error.message)
       );
@@ -83,6 +84,6 @@ export class EditArticleComponent implements OnInit {
   updateKey(): void {
     this.article.key = this.article.title
       .toLowerCase()
-      .replace(new RegExp(" ", "g"), "-");
+      .replace(new RegExp(' ', 'g'), '-');
   }
 }
