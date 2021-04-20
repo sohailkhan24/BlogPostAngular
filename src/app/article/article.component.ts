@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Article } from "../article";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ArticleService } from "../article.service";
-import { Title, Meta } from "@angular/platform-browser";
-import { SharedService } from "../shared.service";
-import { DashboardService } from "../dashboard/dashboard.service";
+import { Component, OnInit } from '@angular/core';
+import { Article } from '../article';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ArticleService } from '../article.service';
+import { Title, Meta } from '@angular/platform-browser';
+import { SharedService } from '../shared.service';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
-  selector: "app-article",
-  templateUrl: "./article.component.html",
-  styleUrls: ["./article.component.css"]
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
   article: Article = new Article();
@@ -24,11 +24,12 @@ export class ArticleComponent implements OnInit {
     private dashboardService: DashboardService
   ) {}
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.route.params.subscribe(params => {
       const key = params.key;
 
-      if (this.router.url.indexOf("dashboard/preview") === -1) {
+      if (this.router.url.indexOf('dashboard/preview') === -1) {
         this.articleService.getArticle(key).subscribe(article => {
           this.displayArticle(article);
         });
@@ -42,7 +43,7 @@ export class ArticleComponent implements OnInit {
 
   displayArticle(article: Article): void {
     if (article === null) {
-      this.router.navigateByUrl("404");
+      this.router.navigateByUrl('404');
       return;
     }
     this.article = article;
@@ -50,29 +51,29 @@ export class ArticleComponent implements OnInit {
       `${this.article.title} - ${this.sharedService.blogTitle}`
     );
     this.meta.addTags([
-      { name: "description", content: this.article.description },
+      { name: 'description', content: this.article.description },
       {
-        property: "og:title",
+        property: 'og:title',
         content: `${this.article.title} - ${this.sharedService.blogTitle}`
       },
       {
-        property: "og:type",
-        content: "website"
+        property: 'og:type',
+        content: 'website'
       },
       {
-        property: "og:url",
+        property: 'og:url',
         content: this.sharedService.baseUrl + this.article.key
       },
       {
-        property: "og:image",
+        property: 'og:image',
         content: this.article.imageUrl
       },
       {
-        property: "og:description",
+        property: 'og:description',
         content: this.article.description
       },
       {
-        property: "og:site_name",
+        property: 'og:site_name',
         content: this.sharedService.blogTitle
       }
     ]);

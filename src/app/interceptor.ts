@@ -4,28 +4,29 @@ import {
   HttpHandler,
   HttpEvent,
   HttpHeaders
-} from "@angular/common/http";
-import { Observable } from "rxjs";
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class Interceptor implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    req = req.clone({ headers: this.getHeaders() });
-    return next.handle(req);
-  }
-
-  getHeaders(): HttpHeaders {
     let token: string;
-    if (typeof localStorage !== "undefined") {
-      token = localStorage.token ? localStorage.token : "";
+    if (typeof localStorage !== 'undefined') {
+      token = localStorage.token ? localStorage.token : '';
     }
 
     const headers: HttpHeaders = new HttpHeaders({
       Authorization: token
     });
 
-    return headers;
+    if (token) {
+      req = req.clone({ headers });
+    }
+
+    return next.handle(req);
   }
 }
